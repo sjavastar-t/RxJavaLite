@@ -14,5 +14,9 @@ public class IOScheduler implements Scheduler {
     public void schedule(Runnable task) {
         EXEC.submit(task);
     }
+
+    public void close() {
+        EXEC.close();
+    }
 }
 

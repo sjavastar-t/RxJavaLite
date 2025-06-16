@@ -1,9 +1,11 @@
 package ru.mail.kievsan.rx.schedulers;
 
+import java.io.Closeable;
+
 /**
  * Планировщик задач.
  */
-public interface Scheduler {
+public interface Scheduler extends Closeable {
     /**
      * Запланировать выполнение задачи.
      *
