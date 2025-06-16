@@ -10,7 +10,7 @@ import java.util.function.BiFunction;
 /**
  * Оператор аккумуляции элементов в одно итоговое значение
  */
-public class ReduceOperator {
+public class ScanOperator {
     public static <T> Observable<T> apply(
             Observable<T> source,
             BiFunction<? super T, ? super T, ? extends T> accumulator

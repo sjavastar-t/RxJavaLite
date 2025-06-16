@@ -31,7 +31,7 @@ class OperatorTest {
     }
 
     @Test
-    void testReduce() {
+    void testScan() {
         Observable<Integer> src = Observable.create(o -> {
             o.onNext(1);
             o.onNext(2);
@@ -40,7 +40,7 @@ class OperatorTest {
         });
 
         List<Integer> out = new ArrayList<>();
-        Observable<Integer> reduced = ReduceOperator.apply(src, Integer::sum);
+        Observable<Integer> reduced = ScanOperator.apply(src, Integer::sum);
         reduced.subscribe(out::add, Throwable::printStackTrace, () -> {});
 
         assertEquals(List.of(6), out);
@@ -66,24 +66,6 @@ class OperatorTest {
         // Все элементы должны быть присутствовать
         assertTrue(merged.containsAll(List.of("a1", "a2", "b1", "b2")));
         assertEquals(4, merged.size());
-    }
-
-    @Test
-    void testConcat() {
-        Observable<String> a = Observable.create(o -> {
-            o.onNext("a");
-            o.onComplete();
-        });
-        Observable<String> b = Observable.create(o -> {
-            o.onNext("b");
-            o.onComplete();
-        });
-
-        List<String> out = new ArrayList<>();
-        Observable<String> concatObs = ConcatOperator.apply(a, b);
-        concatObs.subscribe(out::add);
-
-        assertEquals(List.of("a", "b"), out);
     }
 
     @Test

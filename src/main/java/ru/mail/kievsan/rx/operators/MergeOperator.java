@@ -27,7 +27,7 @@ public class MergeOperator {
             ConcurrentLinkedQueue<Throwable> errors = new ConcurrentLinkedQueue<>();
 
             for (Observable<? extends T> src : sources) {
-                Disposable disp = src.subscribe(new Observer<T>() {
+                Disposable disposable = src.subscribe(new Observer<T>() {
                     @Override
                     public void onNext(T item) {
                         observer.onNext(item);
@@ -56,7 +56,7 @@ public class MergeOperator {
                         }
                     }
                 });
-                composite.add(disp);
+                composite.add(disposable);
             }
         });
     }
