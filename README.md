@@ -29,7 +29,7 @@
     * `FilterOperator` (`filter`),
     * `FlatMapOperator` (`flatMap`),
     * `MergeOperator` (`merge`),
-    * `ReduceOperator` (`reduce`);
+    * `ScanOperator` (`reduce`);
 
 * **Schedulers** (в пакете `ru.mail.kievsan.rx.schedulers`):
     * `ComputationScheduler` (fixed thread pool),
